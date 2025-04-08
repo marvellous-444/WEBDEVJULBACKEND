@@ -70,16 +70,16 @@ app.use(express.json());
 const PORT = 4000;
 
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, 'C:/Users/Chukwudi/Downloads/FrontEnd/vite-project/public'); 
-  },
-  filename: function(req, file, cb) {
-    cb(null, file.originalname); 
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: function(req, file, cb) {
+//     cb(null, 'C:/Users/Chukwudi/Downloads/FrontEnd/vite-project/public'); 
+//   },
+//   filename: function(req, file, cb) {
+//     cb(null, file.originalname); 
+//   }
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 // Sample user profile
 const myProfile = {
@@ -106,35 +106,35 @@ app.post('/Upload', async (req, res) => {
   }
 });
 
-app.post('/Post', upload.single('media'), async (req, res) => {
-    try {
-      console.log("Received Data:", req.body);
-      console.log("Received File:", req.file);
+// app.post('/Post', upload.single('media'), async (req, res) => {
+//     try {
+//       console.log("Received Data:", req.body);
+//       console.log("Received File:", req.file);
   
-      const { title, body } = req.body;
-      const media = req.file ? req.file.path : '';
+//       const { title, body } = req.body;
+//       const media = req.file ? req.file.path : '';
   
-      const user = req.body.user || 'Anonymous'; 
+//       const user = req.body.user || 'Anonymous'; 
   
-      const newPost = new Post({
-        title,
-        body,
-        media,
-        user, 
-        Impressions: {
-          likes: [],
-          reposts: [],
-          comments: [],
-        }
-      });
+//       const newPost = new Post({
+//         title,
+//         body,
+//         media,
+//         user, 
+//         Impressions: {
+//           likes: [],
+//           reposts: [],
+//           comments: [],
+//         }
+//       });
   
-      await newPost.save();
-      res.json({ message: "Post saved successfully", data: newPost });
-    } catch (error) {
-      console.error("Error saving post:", error);
-      res.status(500).json({ error: "Failed to save post" });
-    }
-  });
+//       await newPost.save();
+//       res.json({ message: "Post saved successfully", data: newPost });
+//     } catch (error) {
+//       console.error("Error saving post:", error);
+//       res.status(500).json({ error: "Failed to save post" });
+//     }
+//   });
   
   // db.unicorns.insertOne({
   //   name : "Marvel",
