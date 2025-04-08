@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const multer = require("multer");
 
-const Connection = "mongodb://127.0.0.1:27017/formDataBase";
+const Connection = "mongodb+srv://marvellousatare:NBPyqXWImHgWG2IB@marvel.grg9lsn.mongodb.net/?retryWrites=true&w=majority&appName=Marvel";
 
 mongoose.connect(Connection).then(() => console.log("connected to db"));
 
